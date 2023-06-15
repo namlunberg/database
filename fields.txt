@@ -1,0 +1,42 @@
+CREATE DATABASE IF NOT EXISTS test1;
+CREATE DATABASE IF NOT EXISTS test2;
+
+DROP DATABASE IF EXISTS test2;
+
+USE test1;
+CREATE TABLE table1
+(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    login TEXT,
+    salary INT,
+    age TINYINT UNSIGNED CHECK(age >0 AND age < 100),
+    date DATE  //здесь не выходит вписать DEFAULT NOW(), не пойму почему?
+);
+CREATE TABLE table2
+(
+    Id INT PRIMARY KEY AUTO_INCREMENT,
+    login TEXT,
+    salary INT,
+    age TINYINT UNSIGNED CHECK(age >0 AND age < 100),
+    date DATE //здесь не выходит вписать DEFAULT NOW(), не пойму почему?
+);
+
+RENAME TABLE table2 TO table3;
+
+DROP TABLE table3;
+
+ALTER TABLE table1
+ADD status VARCHAR(50);
+
+ALTER TABLE table1
+DROP COLUMN age;
+
+ALTER TABLE table1
+RENAME COLUMN login TO user_login;  //SQL кричал об ошибке до выполнения, но при этом спокойно исполнил инструкцию, непонятно?
+
+ALTER TABLE table1
+MODIFY COLUMN salary varchar(255);
+
+DELETE FROM table1;
+
+TRUNCATE *;? не работает, не совсем понял задачку
