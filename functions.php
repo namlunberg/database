@@ -1,14 +1,8 @@
 <?php
-function query(mysqli $conn, string $sql): void
-{
-    mysqli_query($conn, $sql);
-}
-
-function tableColsName(string $sql, mysqli $conn): array
+function tableC(string $sql, mysqli $conn): array
 {
     if($result = mysqli_query($conn, $sql)) {
-        $result = mysqli_fetch_assoc($result);
-        $array = array_keys($result);
+        $array = mysqli_fetch_assoc($result);
     }
     return $array;
 }
